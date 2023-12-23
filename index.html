@@ -108,7 +108,10 @@
           snake.pop();
         }
         
-        updateGameBoard();
+         // 判断是否超出游戏板
+  checkGameOver();
+
+  updateGameBoard();
       }
       
       function generateFood() {
@@ -156,7 +159,21 @@
           }
         }
       }
-      
+      function checkGameOver() {
+  var head = snake[0];
+  var maxX = gameBoard.offsetWidth;
+  var maxY = gameBoard.offsetHeight;
+  
+  if (head.x < 0 || head.x >= maxX || head.y < 0 || head.y >= maxY) {
+    if (confirm("Game Over! Play again?")) {
+      snake = [{x: 200, y: 200}];
+      direction = "right";
+      generateFood();
+      updateGameBoard();
+    }
+  }
+}
+
       // 初始化游戏
       generateFood();
       updateGameBoard();
