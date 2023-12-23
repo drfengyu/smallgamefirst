@@ -4,8 +4,8 @@
     <title>贪吃蛇游戏</title>
     <style>
       #game-board {
-        width: 400px;
-        height: 400px;
+        width: calc(100vw - 40px);
+        height: calc(100vh - 200px);
         border: 1px solid black;
         position: relative;
         overflow: hidden; /* 隐藏蛇超出游戏板的部分 */
@@ -145,6 +145,11 @@
       
       // 每500毫秒移动一次蛇
       setInterval(moveSnake, 500);
+       // 更新游戏板大小
+      window.addEventListener("resize", function() {
+        gameBoard.style.width = "calc(100vw - 40px)";
+        gameBoard.style.height = "calc(100vh - 200px)";
+      });
     </script>
   </body>
 </html>
